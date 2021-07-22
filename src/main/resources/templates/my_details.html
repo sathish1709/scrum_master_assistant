@@ -1,0 +1,221 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Scrum Master</title>
+<link href="/Styles/stylesheets.css" type="text/css" rel="stylesheet" />
+<link  href="/Styles/sustylesheets.css" type="text/css" rel="stylesheet" />
+<link  href="/Styles/allUsers.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="/scripts/script.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script>
+
+    $(function() {
+    $( "#soeid" ).autocomplete({
+      source: function( request, response ) {
+        $.ajax({
+          url: "/allsoeid",
+          dataType: "json",
+          data: {
+            text: request.term
+          },
+          success: function( data ) {
+            response( data );
+          }
+        });
+      },
+      select: function (event, ui) {
+    	   // Set selection
+    	   $('#soeid').val(ui.item.label); // display the selected text
+    	   $('#selected_customer').val(ui.item.label); // save selected id to input
+    	   return false;
+    	  }
+    
+    });
+  });
+    
+    $(function() {
+        $( "#manager_soeid" ).autocomplete({
+          source: function( request, response ) {
+            $.ajax({
+              url: "/allmsoeid",
+              dataType: "json",
+              data: {
+                text: request.term
+              },
+              success: function( data ) {
+                response( data );
+              }
+            });
+          },
+          select: function (event, ui) {
+        	   // Set selection
+        	   $('#manager_soeid').val(ui.item.label); // display the selected text
+        	   $('#selected_customer').val(ui.item.label); // save selected id to input
+        	   return false;
+        	  }
+        
+        });
+      });
+    
+    $(function() {
+        $( "#dsoeid" ).autocomplete({
+          source: function( request, response ) {
+            $.ajax({
+              url: "/deletesoeid",
+              dataType: "json",
+              data: {
+                text: request.term
+              },
+              success: function( data ) {
+                response( data );
+              }
+            });
+          },
+          select: function (event, ui) {
+        	   // Set selection
+        	   $('#dsoeid').val(ui.item.label); // display the selected text
+        	   $('#selected_customer').val(ui.item.label); // save selected id to input
+        	   return false;
+        	  }
+        
+        });
+      });
+</script>
+</head>
+<body onload="hide()">
+<div class="navbar">
+<a class="home"href="/home">Home</a>
+<a class="logout" href ="/logout"> Logout</a>
+</div>
+<br>
+<!-- <div class="row"> -->
+<div id ="scrum_mater" class="buttons" >
+	<button id="mydetails" class= "bttn" onclick="mydetails()">My Details</button>
+<button id="sendMom" class= "bttn" onclick="sendMom()">Send Email/MOM</button>
+	<button id="addTeam" class= "bttn" onclick="addTeamMember()">Add Team Member</button>
+	<button id="deleteTeam" class= "bttn" onclick="deleteTeamMember()">Delete Team Member</button>
+	<button id="createRelease" class= "bttn" onclick="createRelease()">Create Release</button>
+  <!-- <form th:object="${my_details}" method="post"  action="/allProjects" >
+	<button type="submit" id="viewProjects"class= "VPbttn" >View Projects/Tasks</button> -->
+
+	
+</div>
+<div class="VP">
+<form th:object="${my_details}" method="post"  action="/allProjects" >
+	<button type="submit" id="viewProjects"class= "VPbttn" >View Projects/Tasks</button>
+	</form>
+	</div>
+
+
+ <div id="ModalDTL" class="modalDTL">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="closedtl">&times;</span>
+         <form th:object="${my_details}" method="get">
+ 	<p style="color:black;">SOEID: <input type="text" th:field="*{soeid}" readonly/></p>
+	 <p style="color:black;">First Name:<input type="text" th:field="*{first_name}"/readonly></p>
+	 <p style="color:black;">Last Name:<input type="text" th:field="*{last_name}"/readonly></p>
+	 <p style="color:black;">Email ID:<input type="text" th:field="*{email_id}"/readonly></p>
+	 <p style="color:black;">Designation: <input type="text" th:field="*{designation}"/readonly></p>
+	 <p style="color:black;">Scrum Master: <input id="sm" type="text" th:field="*{scrum_master}"/readonly></p>
+ 
+  </form>
+  </div>
+
+</div>
+<!-- The Modal -->
+<div id="ModalCR" class="modalCR">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="closecr">&times;</span>
+     <form method="POST" action="/createrelease" enctype="multipart/form-data" th:object="${my_details}">
+    <p style="color:black;">Project Name:
+		 <input type="text" id="project_name" name="project_name" required ></input></p>
+	   <p style="color:black;">Project ID:
+		 <input type="text" id="project_id" name = "project_id"  pattern="^\d{4}" required ></input></p>
+	<p style="color:black;">Department: <input id ="dept" type="text" name="dept_name" list="D" required>
+            <datalist id="D">
+                <option value="MSST">
+                <option value="TTS">
+            </datalist>
+            </input></p>
+     <p style="color:black;">Project Owner:
+		 <input type="text" th:field="*{soeid}" readonly ></input></p>
+  		 <p style="color:black;">Release Number:
+  		   <input type="text"id="release_no"  name="release_no" pattern="[A-Za-z]{2}\d{3}"required></input></p>
+  		    <p style="color:black;"> Release Manager:
+            <input type="text"id="release_mgr"  name="release_mgr" pattern="[A-Za-z]{2}\d{5}" required></input></p>
+            <p style="color:black;">Release Status: <input id ="release_status" type="text" name="release_status" list="S" required>
+            <datalist id="S">
+                <option value="Development">
+                <option value="Testing">
+                <option value="Sign Off">
+            </datalist>
+            </input></p>
+               <p style="color:black;"> Release Anchor:
+   				<input type="text"id="release_anchor"  name="release_anchor"  pattern="[A-Za-z]{2}\d{5}"  required></input></p>
+       <input type="file" name="file" /><br/><br/>
+      <input type="submit" value="Submit" />
+    </form>
+  </div>
+	</div>
+  <div id="ModalATM" class="modalATM">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span class="closeatm">&times;</span>
+      <form th:object="${my_details}" action="/newmember" method="post">
+      <p style="color:black;">Select SOEID:
+  		   <input type="text" id="soeid" name="soeid" pattern="[A-Za-z]{2}\d{5}" required ></input></p>
+  		 <p style="color:black;">Manager SOEID:
+  		   <input type="text"id="manager_soeid"  name="manager_soeid" pattern="[A-Za-z]{2}\d{5}" required></input></p>
+  		    <p style="color:black;"> Secondary Scrum Master:
+            <input type="radio" id="secondary_scrum_master" value="Yes" name ="secondary_scrum_master" required> YES
+            <input type="radio" id="secondary_scrum_master" value="No" name ="secondary_scrum_master" required> NO <br>
+  			<input type="submit" value="Add User" />
+  		</form>
+    </div>
+  	</div>
+    <div id="ModalDTM" class="modalDTM">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="closedtm">&times;</span>
+         <form th:object="${my_details}" action="/deletemember" method="post">
+        <p style="color:black;">Select SOEID:
+    		   <input type="text"id="dsoeid" name = "dsoeid" pattern="[A-Za-z]{2}\d{5}" required></input></p>
+    		   <p style="color:black;">Manager SOEID:
+  		   <input type="text" id="manager_soeid" th:field="*{soeid}" readonly></input></p>
+    	<input type="submit" value="Delete Team Member" />
+  		</form>
+    	</div>
+   
+  </div>
+  
+  <div id="ModalMOM" class="modalMOM">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <span class="closemom">&times;</span>
+         <form  action="/sendmail" method="post">
+        <p style="color:black;">Select Release:
+    		   <input type="text"id="release_no" name = "release_no"  pattern="[A-Za-z]{2}\d{2}"  required></input></p>
+    		   <p style="color:black;">Attendees :
+  		   <input type="text" id="attendees" name= "attendees"></input></p>
+  		   
+  		   <p style="color:red;">Should be comma separated for multiple participants</p>
+  		   
+  		   <p style="color:black;">Non Attendees:
+  		   <input type="text" id="nattendees" name= "nattendees"></input></p>
+  		     <p style="color:red;">Should be comma separated for multiple participants</p>
+  		   <p style="color:black;">Time Taken:
+  		   <input type="text" id="time_taken" name= "time_taken"></input></p>
+  		   
+    	<input id= "mail"type="submit" value="Send Mail" />
+  		</form>
+    	</div>
+   
+  </div>
+    	
+    </body>
+</html>

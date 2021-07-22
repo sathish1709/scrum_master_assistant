@@ -1,0 +1,19 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Welcome to Citi Scrum Master Assistant User Setup </title>
+        <link th:href="@{/Styles/sustylesheets.css}" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+    <h1 class="p1"> User Setup </h1>
+    	<!-- <p><span th:text = "'Hello ' + ${user}"></span></p> -->
+      <div id="Information" class="container">
+    	<a href ="/allUsers"> User Information</a>
+        <a href ="/newUserSetup"> New User Setup</a>  
+        <!-- <a href ="/allProjects">Project Information</a>
+        <a href ="/newProjectSetup"> New Project Setup</a> -->
+        <a href ="/logout"> Logout</a>
+      </div>
+    </body>
+</html>

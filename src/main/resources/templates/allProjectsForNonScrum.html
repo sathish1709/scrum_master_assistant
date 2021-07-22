@@ -1,0 +1,36 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Setup</title>
+<link th:href="@{/styles/styles.css}" type="text/css" rel="stylesheet" />
+<link  href="/Styles/sustylesheets.css" type="text/css" rel="stylesheet" />
+<link  href="/Styles/allUsers.css" type="text/css" rel="stylesheet" />
+<script>
+
+</script>
+</head>
+<body onload=del_hide()>
+
+<div class="navbar">
+<a class="home"href="/home">Home</a>
+<a class="logout" href ="/logout"> Logout</a>
+</div>
+<table id="table1">
+	<tr><th>Project ID</th><th>Project Name</th><th>Department</th><th>Project Owner</th><th>Release Number</th><th>Release Status</th><th>View Action</th><th>Delete Action</th></tr>
+	<tr th:each="p:${allProjects}">
+		<td><a th:href="'/pview/' + ${p.project_id}"><span th:text="${p.project_id}"></span></a></td>
+		
+		<td th:text="${p.project_name}">Project Name</td>
+		<td th:text="${p.dept_name}">Department</td>
+		<td th:text="${p.project_owner}">Project Owner</td>
+		<td th:text="${p.release_no}">Release Number</td>
+		<td th:text="${p.release_status}">Release Status</td>
+	
+			<td><a  id="del" th:href="'/pview/' + ${p.project_id}">View Project</a></td>	
+ 		
+ 		
+	</tr>
+</table>
+</body>
+</html>

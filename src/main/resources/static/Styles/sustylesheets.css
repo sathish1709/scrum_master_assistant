@@ -1,0 +1,140 @@
+body{
+  color:black;
+  background-image: url("citibk.jpg");
+  background-size:150px 100px;
+  background-position:top;
+  background-repeat:no-repeat;
+  }
+
+  .p1{
+  position: absolute;
+ top: 150px;
+  left: 550px;
+  text-align: center;
+  font-family:sans-serif;
+  font-weight:bolder;
+  color: #002966;
+  font-size: 50px;
+  }
+  .p2{
+  position: absolute;
+  top: 150px;
+  left: 570px;
+  text-align: center;
+  font-family:sans-serif;
+  font-weight:bolder;
+  color: #002966;
+  font-size: 50px;
+  }
+   .p3{
+  position: absolute;
+	top:150px;
+  left: 500px;
+  text-align: center;
+  font-family:sans-serif;
+  font-weight:bolder;
+  color: #002966;
+  font-size: 50px;
+  }
+   .p4{
+  position: absolute;
+	top:150px;
+  left: 500px;
+  text-align: center;
+  font-family:sans-serif;
+  font-weight:bolder;
+  color: #002966;
+  font-size: 25px;
+  }
+   .p5{
+  position: absolute;
+	top:150px;
+  left: 600px;
+  text-align: center;
+  font-family:sans-serif;
+  font-weight:bolder;
+  color: #002966;
+  font-size: 50px;
+  }
+   .p6{
+  position: absolute;
+	top:150px;
+  left: 600px;
+  text-align: center;
+  font-family:sans-serif;
+  font-weight:bolder;
+  color: #002966;
+  font-size: 50px;
+  }
+  .container {
+  display: flex;
+  justify-content: center;
+  margin-top: 300px;
+}
+  #Information a {
+	 position: static;
+ top: 800px;
+  left: 600px;
+    background-color:Tomato;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    align: center;
+    text-align: center;
+    display: block;
+    width: 100px;
+    height:30px;
+    float:left;
+  }
+
+  #Information a {
+    background-color:#002966;
+  }
+  #Information a:hover {
+    background-color:Red;
+  }
+  #Information a:focus {
+    background-color:Red;
+  }
+  input[type=button],[type=submit]{
+font-size: 16px;
+background: #797953;
+color: #002966;
+font-weight: bold;
+cursor: pointer;
+width: 100%;
+border-radius: 5px;
+padding: 10px 0;
+outline:none;
+width: 20em;  height: 2em;
+}
+input[type=button],[type=submit]:hover{
+background: red;
+}
+.VPbttn{
+ background-color:#002966;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  align: center;
+  text-align: center;
+}
+.VPbttn:hover{
+background: red;
+}
+.VP{
+	background: #002966;
+color: white;
+font-weight: bold;
+cursor: pointer;
+border-radius: 5px;
+    margin-left: 451px;
+    margin-top: 21%;
+    text-align: center;
+    margin-right: 466px;
+	
+}

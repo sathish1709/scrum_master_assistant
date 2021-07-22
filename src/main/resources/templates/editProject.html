@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit User</title>
+<link th:href="@{/styles/styles.css}" type="text/css" rel="stylesheet" />
+</head>
+<body style="background-color: 	#FFFFFF">
+    <h1 style ="color:blue"> Edit Project </h1>
+    <p><a href="/home">Home</a>&nbsp;
+<td><a href="/logout">Log Out</a></td></p>
+<form th:action="@{/psave}" th:object="${editProjects}" method="post">
+	<table>
+        <tr>
+            <td>Project Name: </td><td><input  type="text" name="project_name" required>
+        </tr>
+        <tr>
+            <td>Project ID: </td><td><input type="text" name="project_id" pattern="^[0-9]*$" required>
+        </tr>
+        <tr>
+            <td>Department: </td><td><input id ="dept" type="text" name="dept_name" list="D" required>
+                <datalist id="D">
+                    <option value="MSST">
+                    <option value="TTS">
+                </datalist>
+        </tr>
+        <tr>
+		<td>Project Owner: </td><td><input  type="text" name="project_owner" pattern="[A-Za-z]{2}\d{5}" required>
+	</tr>
+        <tr>
+            <td>&nbsp;</td><td><input type="submit" value="Edit" />
+        </tr>
+        </table>
+</form>
+
+</body>
+</html>

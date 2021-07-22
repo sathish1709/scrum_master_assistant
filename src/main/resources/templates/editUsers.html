@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Edit User</title>
+<link  href="/Styles/sustylesheets.css" type="text/css" rel="stylesheet" />
+<link  href="/Styles/allUsers.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar">
+      <a href="/shome">Home</a>
+      <a href ="/logout"> Logout</a>
+    </div>
+<form th:action="@{/save}" th:object="${editUsers}" method="post">
+	<table id="table2">
+	<tr>
+		<th colspan="2">Edit User Setup</th>
+	</tr>
+	<tr>
+		<td>SOEID:</td><td> <input type="text" th:field="*{soeid}" readonly/>
+	</tr>
+	<tr>
+		<td>First Name:</td><td> <input type="text" th:field="*{first_name}"  pattern="([A-Za-z ]+)" required/>
+	</tr>
+	<tr>
+		<td>Last Name:</td><td> <input type="text" th:field="*{last_name}"  pattern="([A-Za-z ]+)" required/>
+	</tr>
+	<tr>
+		<td>Email ID:</td><td> <input type="text" th:field="*{email_id}" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required/>
+	</tr>
+	<tr>
+		
+		<td>Designation: </td><td><select th:field="*{designation}">
+				<option value="Project Manager">Project Manager</option>
+				<option value="Develoer">Developer</option>
+				<option value="Administrator">Administrator</option>
+				<option value="Role Co-ordinator">Role Co-ordinator</option>
+				<option value="Release Manager">Release Manager</option>
+				</select>
+	</tr>
+	<tr>
+	<td>Scrum Master:</td><td>
+	<input type="radio" th:field="*{scrum_master}" name="scrum_master" value="Yes">Yes
+	<input type="radio" th:field="*{scrum_master}" name="scrum_master" value="No">No<br>
+	</tr>
+	<tr>
+	<td colspan="2">&nbsp;<input type="submit" value="Save" />
+	</tr>
+	</table>
+</form>
+
+</body>
+</html>

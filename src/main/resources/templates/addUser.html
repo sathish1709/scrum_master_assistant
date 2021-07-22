@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add User</title>
+<link href="/Styles/allUsers.css" type="text/css" rel="stylesheet" />
+<link href="/Styles/sustylesheets.css" type="text/css" rel="stylesheet" />
+
+</head>
+<body >
+    
+    <div class="navbar">
+      <a class="home"href="/shome">Home</a>
+<a class="logout" href ="/logout"> Logout</a>
+    </div>
+<form id ="AddUser " th:action="@{/new}" method="post" onsubmit = "return ValidateForm()" class="form">
+<label>SOEID:</label>
+		 <input  type="text" name="soeid" pattern="[A-Za-z]{2}\d{5}" required></br>
+
+	<label>First Name:</label>
+		 <input type="text" name="first_name" pattern="([A-Za-z ]+)" required></br>
+
+	<label>Last Name:</label>
+		 <input id ="lname" type="text" name="last_name" pattern="([A-Za-z ]+)" required></br>
+	<label>Email id:</label>
+	<input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email_id" required></br>
+
+<label>Designation:</label>
+	<input id ="designation" type="text" list = "roles" name="designation" required><br>
+		<datalist id="roles">
+        <option value="Project Manager">
+        <option value="Developer">
+        <option value="Administrator">
+        <option value="Role Co-ordinator">
+        <option value="Release Manager">
+    </datalist>
+
+<label>Scrum Master:</label>
+		<input id = "yes" type="radio" name="scrum_master" value="Yes">Yes
+	 <input  id = "no" type="radio" name="scrum_master" value="No">No</br>
+
+		<input type="submit" value="Add User" />
+	
+</form>
+
+</body>
+</html>

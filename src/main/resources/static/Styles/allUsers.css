@@ -1,0 +1,105 @@
+.navbar {
+  overflow: hidden;
+  font-family: Arial, Helvetica, sans-serif;
+  border-style: groove;
+  margin: 30px;
+background-color:#002966;
+border: 1px solid black;
+
+display: flex;
+  justify-content: center;
+  margin-top: 104px;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:0px;
+  width: 50%;
+}
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  display: flex;
+}
+.navbar a:hover {
+  background-color:red;
+}
+table, th, td {
+  border: 1px solid black;
+  text-align: center;
+}
+table#table1 {
+    width:70%;
+    margin-top:20;
+    margin-left:15%;
+    margin-right:15%;
+    border:none;
+  }
+ 
+  table#table2 {
+      width:40%;
+      margin-left:30%;
+      margin-right:15%;
+    }
+tr {
+  height: 50px;
+}
+tr:nth-child(even) {background-color:;}
+tr:nth-child(odd) {background-color:;}
+ .ulogout{
+	  margin-left: 25px;
+}  
+ .home{
+	  margin-right: 1100px;
+}
+.uhome{
+	  margin-right: 0px;
+	  margin-left:10px;
+}
+
+
+#sendMOM{
+	margin-left:0px;
+}
+.VPbttn{
+	margin-left:0px;
+}
+
+input[type=text],[type=email], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 30%;
+  background-color: #002966;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  
+}
+
+input[type=submit]:hover {
+  background-color: Red;
+}
+
+.form, .formvt{
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+  margin-left:50px;
+  margin-right:50px
+}

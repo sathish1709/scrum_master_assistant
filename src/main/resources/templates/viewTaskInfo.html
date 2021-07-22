@@ -1,0 +1,47 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Setup</title>
+<link  href="/Styles/sustylesheets.css" type="text/css" rel="stylesheet" />
+<link  href="/Styles/allUsers.css" type="text/css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="navbar">
+<a class="home"href="/home">Home</a>
+<a class="logout" href ="/logout"> Logout</a>
+</div>
+<div>
+
+<form name="0.1_myform" class="formvt"  th:action="@{/tsave}" th:object="${viewTaskInfo}" method="post" target="_blank" onsubmit="try {return window.confirm(&quot;This form may not function properly due to certain security constraints.\nContinue?&quot;);} catch (e) {return false;}">
+    <label>JIRA Number :</label>
+    <input type="text" th:field="*{jira_no}" readonly><br>
+       <label>Project ID :</label>
+    <input type="text" th:field="*{p_id}" readonly><br>
+    <label>Name Task :</label>
+    <input type="text" th:field="*{task_name}" readonly><br>
+    <label>Task Owner :</label>
+    <input type="text" th:field="*{task_owner}" readonly><br>
+    <label>Task Status :</label>
+    <select th:field="*{task_status}">
+           <option value="Requirement analysis">Requirement analysis</option>
+            <option value="Feasibility/impact study">Feasibility/impact study</option>
+            <option value="Development">Development</option>
+            <option value="Unit testing">Unit testing</option>
+            <option value="Integration testing">Integration testing</option>
+            <option value="UAT testing coordination">UAT testing coordination</option>
+            <option value="Deployment activity">Deployment activity</option>
+            <option value="Post-release activity">Post-release activity</option>
+     </select><br>
+    <label>UAT Date :</label>
+    <input type="date" th:field="*{uat_date}"><br>  <br>
+    <label>Comments :</label>
+    <input type="text" th:field="*{task_comments}"><br>
+
+    <input type="submit" value="Update"><br><br>
+
+</form>
+</div>
+</body>
+</html>

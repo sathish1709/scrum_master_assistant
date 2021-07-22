@@ -1,0 +1,35 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>User Setup</title>
+<link  href="/Styles/sustylesheets.css" type="text/css" rel="stylesheet" />
+<link  href="/Styles/allUsers.css" type="text/css" rel="stylesheet" />
+<script>
+function doDelete(){
+	return confirm("Are you sure you want to delete this User?");
+}
+</script>
+</head>
+<body>
+
+<div class="navbar">
+<a class="home"href="/shome">Home</a>
+<a class="logout" href ="/logout"> Logout</a>
+</div>
+
+<table id="table1">
+	<tr><th>SOEID</th><th>First Name</th><th>Last Name</th><th>Email ID</th><th>Designation</th><th>Scrum Master</th><th>Delete</th></tr>
+	<tr th:each="s:${allUsers}">
+		<td><a th:href="'/edit/' + ${s.soeid}"><span th:text="${s.soeid}"></span></a></td>
+		<td th:text="${s.first_name}">First Name</td>
+		<td th:text="${s.last_name}">Last Name</td>
+		<td th:text="${s.email_id}">Email ID</td>
+		<td th:text="${s.designation}">Designation</td>
+		<td th:text="${s.scrum_master}">Scrum Master</td>
+		<td><a th:href="'/delete/' + ${s.soeid}" onclick="return doDelete()">Delete User</a></td>
+	</tr>
+</table>
+
+</body>
+</html>

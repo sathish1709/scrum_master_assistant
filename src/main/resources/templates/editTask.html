@@ -1,0 +1,59 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Add User</title>
+<link th:href="@{/styles/styles.css}" type="text/css" rel="stylesheet" />
+<!--<script>
+function GetSelectedValue(){
+	var e = document.getElementById("roles");
+	var designation = document.getElementById("designation");
+	var result = e.options[e.selectedIndex].text;
+	if ( result == "Project Manager") {
+		
+	      }
+	
+	
+}
+</script>-->
+</head>
+<body style="background-color: beige; color:brown;">
+    <h1 style ="color:blue">Citi Scrum Master Assistant User Setup </h1>
+<form id ="AddUser " th:action="@{/new}" method="post" onsubmit = "return ValidateForm()">
+	<table>
+	<tr>
+		<td>SOEID: </td><td><input  type="text" name="soeid" pattern="[A-Za-z]{2}\d{5}" required>
+	</tr>
+	<tr>
+		<td>First Name: </td><td><input type="text" name="first_name" pattern="([A-Za-z ]+)" required>
+	</tr>
+	<tr>
+		<td>Last Name: </td><td><input id ="lname" type="text" name="last_name" pattern="([A-Za-z ]+)" required>
+	</tr>
+	<tr>
+		<td>Email id: </td><td><input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email_id" required>
+	</tr>
+	<tr>
+		<td>Designation: </td><td><input id ="designation" type="text" list = "roles" name="designation" required>
+		<datalist id="roles">
+        <option value="Project Manager">
+        <option value="Developer">
+        <option value="Administrator">
+        <option value="Role Co-ordinator">
+        <option value="Release Manager">
+        </datalist>
+		
+	</tr>
+	<tr>
+		<td>Scrum Master: </td><td><input id = "yes" type="radio" name="scrum_master" value="Yes">Yes<br>
+		                           <input  id = "no" type="radio" name="scrum_master" value="No">No</br>
+	</tr>
+	<tr>
+		<td>&nbsp;</td><td><input type="submit" value="Add User" />
+	</tr>
+	</table>
+</form>
+<p><a href="/">Home</a>&nbsp;<a href="/logout">Log Out</a></p>
+</body>
+</html>

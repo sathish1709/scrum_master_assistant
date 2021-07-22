@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>Security Demo - Login</title>
+<link href="/Styles/login.css" type="text/css" rel="stylesheet" />
+    </head>
+    <body>
+      
+	     <div class="container">
+			<div class="main">
+				<h1><td>Scrum Master<td></h1>
+
+	        <form action="/login" method="post">
+	            <label>SOEID :</label>
+					<input type="text" name="username" id="username"/><br>
+				<label>Password :</label>
+					<input type="password" name="password" id="password"/><br>
+				<input type="submit" value="SignIn" id="submit"/><br><br>
+	        </form>
+	    <!--<span><b class="note">Note : </b>For this demo use following username and password. <br/><b class="valid">User Name : Formget<br/>Password : formget#123</b></span>-->
+</div>
+</div>
+    </body>
+</html>
